@@ -24,31 +24,14 @@ This project analyzes monthly sales data for **Furniture** and **Office Supplies
   - Deriving actionable insights for inventory management.
   - Formulating sales strategies based on forecasted trends.
  
-## ARMA Model Overview
-The **ARMA(p, q)** model, which combines **Autoregressive (AR)** and **Moving Average (MA)** components, is defined as:
+![Arima model](https://github.com/user-attachments/assets/d980c433-2a34-4bd1-8c04-0187ec5b5a99)
+**ARIMA Equation:**
+![ARIMA formula](https://github.com/user-attachments/assets/6b57b408-0077-4f75-8862-20895ece6b78)
 
-\[
-Y_t = c + \sum_{i=1}^{p} \phi_i Y_{t-i} + \sum_{j=1}^{q} \theta_j \epsilon_{t-j} + \epsilon_t
-\]
 
-Where:
-- \( Y_t \) is the time series at time \( t \).
-- \( c \) is a constant term.
-- \( \phi_i \) represents the coefficients of the **AR** terms.
-- \( \theta_j \) represents the coefficients of the **MA** terms.
-- \( p \) is the number of lagged values (**AR order**).
-- \( q \) is the number of lagged error terms (**MA order**).
-- \( \epsilon_t \) is white noise.
+**Obtained Forecast Graphs**
+![Furniture sales forecast](https://github.com/user-attachments/assets/5e0ac4d5-917e-42bc-8617-5f4d7676a7d5)
+![office supplies forecast](https://github.com/user-attachments/assets/7f0dcefe-1d96-4a5a-8888-ff3ce11022c7)
 
-### ARIMA Model Extension
-The **ARIMA(p, d, q)** model extends ARMA by including an **Integration (I)** term:
 
-\[
-(1 - B)^d Y_t = c + \sum_{i=1}^{p} \phi_i Y_{t-i} + \sum_{j=1}^{q} \theta_j \epsilon_{t-j} + \epsilon_t
-\]
 
-Where:
-- \( d \) is the degree of differencing applied to achieve stationarity.
-- \( B \) is the **backshift operator**, where \( B Y_t = Y_{t-1} \).
-
-The **SARIMA (Seasonal ARIMA) model** extends ARIMA by adding seasonal components, making it useful for time series with repeating patterns over fixed intervals.
