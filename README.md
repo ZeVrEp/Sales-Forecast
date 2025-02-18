@@ -24,21 +24,31 @@ This project analyzes monthly sales data for **Furniture** and **Office Supplies
   - Deriving actionable insights for inventory management.
   - Formulating sales strategies based on forecasted trends.
  
-  - ## ARIMA Model Overview
-**ARIMA** stands for *Autoregressive Integrated Moving Average* and is denoted as ARIMA(p, d, q):
+## ARMA Model Overview
+The **ARMA(p, q)** model, which combines **Autoregressive (AR)** and **Moving Average (MA)** components, is defined as:
 
-- **p:** Order of the Autoregressive (AR) component.
-- **d:** Degree of differencing needed for stationarity.
-- **q:** Order of the Moving Average (MA) component.
-
-### ARIMA Model Formula
-The general ARIMA(p, d, q) model is given by:
 \[
-\phi(B)(1 - B)^d y_t = \theta(B) \epsilon_t
+Y_t = c + \sum_{i=1}^{p} \phi_i Y_{t-i} + \sum_{j=1}^{q} \theta_j \epsilon_{t-j} + \epsilon_t
 \]
+
 Where:
-- \( y_t \) is the observed time series at time \( t \).
-- \( B \) is the backshift operator.
-- \( \phi(B) = 1 - \phi_1 B - \phi_2 B^2 - \dots - \phi_p B^p \) represents the AR component.
-- \( \theta(B) = 1 + \theta_1 B + \theta_2 B^2 + \dots + \theta_q B^q \) represents the MA component.
+- \( Y_t \) is the time series at time \( t \).
+- \( c \) is a constant term.
+- \( \phi_i \) represents the coefficients of the **AR** terms.
+- \( \theta_j \) represents the coefficients of the **MA** terms.
+- \( p \) is the number of lagged values (**AR order**).
+- \( q \) is the number of lagged error terms (**MA order**).
 - \( \epsilon_t \) is white noise.
+
+### ARIMA Model Extension
+The **ARIMA(p, d, q)** model extends ARMA by including an **Integration (I)** term:
+
+\[
+(1 - B)^d Y_t = c + \sum_{i=1}^{p} \phi_i Y_{t-i} + \sum_{j=1}^{q} \theta_j \epsilon_{t-j} + \epsilon_t
+\]
+
+Where:
+- \( d \) is the degree of differencing applied to achieve stationarity.
+- \( B \) is the **backshift operator**, where \( B Y_t = Y_{t-1} \).
+
+The **SARIMA (Seasonal ARIMA) model** extends ARIMA by adding seasonal components, making it useful for time series with repeating patterns over fixed intervals.
